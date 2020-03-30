@@ -1,8 +1,10 @@
 import React from "react";
 
+
 const divStyle = {
  
  width:'200px',
+
 
 
 };
@@ -12,11 +14,13 @@ const divStyle1 = {
  border:'1px solid #000',
 display: 'flex',  justifyContent:'center', alignItems:'center', height: '5vh',
  
- width:'20%',
+ width:'25%',
  float:'left',
 
  
 };
+
+
 
 
 
@@ -41,7 +45,7 @@ const Cells = (props) => {
         }
     }
     return (
-        <div class="grid-container" style={divStyle} >
+        <div style={divStyle}>
             {cells}
         </div>
     )
