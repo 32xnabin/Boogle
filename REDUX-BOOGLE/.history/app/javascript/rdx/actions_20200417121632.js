@@ -46,7 +46,6 @@ function receiveValidate(json) {
 function receiveValidateErr(error) {
   return {
     type: RECEIVE_VALIDATE_ERROR,
-    validword: "",
     error,
   };
 }

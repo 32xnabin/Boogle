@@ -96,7 +96,7 @@ module BoogleHelper
               break if cursor[:row].negative? || cursor[:col].negative?
             rescue StandardError => e
               puts "Errors: #{e.inspect}"
-              
+              return false
               break
             end
             limit -= 1

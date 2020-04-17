@@ -44,8 +44,17 @@ class App extends Component {
     const { validateData } = this.props;
 
     const { count } = validateData;
-    alert("Game over ! TOTAL SCORE : " + count);
-    location.reload();
+    alert("Game over you scored" + count);
+    this.setState({
+      game_is_on: true,
+
+      messageToUser: "",
+      correct_words: [],
+      attempted_words: [],
+      count: 0,
+
+      timer_start: Date.now() + 180000,
+    });
   }
   restartGame(e) {
     e.preventDefault();

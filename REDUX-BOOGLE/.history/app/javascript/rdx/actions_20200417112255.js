@@ -46,7 +46,6 @@ function receiveValidate(json) {
 function receiveValidateErr(error) {
   return {
     type: RECEIVE_VALIDATE_ERROR,
-    validword: "",
     error,
   };
 }
@@ -72,13 +71,7 @@ export function validateWord(word, currentMatrix) {
         word: `${word}`,
         current_matrix: currentMatrix,
       })
-      .then((res) => {
-        if (res.data.result.length > 0) {
-          dispatch(receiveValidate(res.data.result));
-        } else {
-          dispatch(receiveValidateErr(err));
-        }
-      })
+      .then((res) => dispatch(receiveValidate(res.data.result)))
       .catch((err) => dispatch(receiveValidateErr(err)));
   };
 }

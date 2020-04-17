@@ -30,7 +30,7 @@ class App extends Component {
       attempted_words: [],
       count: 0,
 
-      timer_start: Date.now() + 10000,
+      timer_start: Date.now() + 1000,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,11 +41,17 @@ class App extends Component {
   }
 
   stopGame(e) {
-    const { validateData } = this.props;
+    alert("Game over you scored" + self.state.count);
+    this.setState({
+      game_is_on: true,
 
-    const { count } = validateData;
-    alert("Game over ! TOTAL SCORE : " + count);
-    location.reload();
+      messageToUser: "",
+      correct_words: [],
+      attempted_words: [],
+      count: 0,
+
+      timer_start: Date.now() + 180000,
+    });
   }
   restartGame(e) {
     e.preventDefault();
@@ -62,7 +68,7 @@ class App extends Component {
   }
 
   render() {
-    const { matrixData, validateData } = this.props;
+    const { matrixData, validateData, total_score } = this.props;
 
     const { currentMatrix } = matrixData;
     const { validword } = validateData;

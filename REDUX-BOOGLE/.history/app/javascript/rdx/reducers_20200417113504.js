@@ -37,9 +37,8 @@ export function matrixData(
 
 export function validateData(
   state = {
-    count: 0,
     isFetching: false,
-    validword: "Good Luck!",
+    validword: "",
   },
   action
 ) {
@@ -52,7 +51,6 @@ export function validateData(
       return Object.assign({}, state, {
         isFetching: false,
         validword: action.validword,
-        count: state.count + 1,
       });
     case RECEIVE_VALIDATE_ERROR:
       return Object.assign({}, state, {

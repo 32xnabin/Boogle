@@ -30,7 +30,7 @@ class App extends Component {
       attempted_words: [],
       count: 0,
 
-      timer_start: Date.now() + 10000,
+      timer_start: Date.now() + 180000,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,17 +41,56 @@ class App extends Component {
   }
 
   stopGame(e) {
-    const { validateData } = this.props;
+    alert("Game over");
+    this.setState({
+      game_is_on: true,
 
-    const { count } = validateData;
-    alert("Game over ! TOTAL SCORE : " + count);
-    location.reload();
+      messageToUser: "",
+      correct_words: [],
+      attempted_words: [],
+      count: 0,
+
+      timer_start: Date.now() + 180000,
+    });
   }
   restartGame(e) {
     e.preventDefault();
 
     if (confirm("Are you sure ?")) {
       location.reload();
+    }
+  }
+
+  componentWillUpdate() {
+    const { validateData } = this.props;
+    const { validword } = validateData;
+    const { score } = this.props;
+    if (validword != "Good Luck!") {
+      if (validword.length > 0) {
+        let msg = "";
+        let msg_type = "";
+        if (validword.length === 2) {
+          msg = "Nice";
+          msg_type = "green";
+        } else if (validword.length === 3) {
+          msg = "Cool";
+          msg_type = "green";
+        } else {
+          msg = "Awesome";
+          msg_type = "green";
+        }
+        // this.setState({
+        //   total_score: score + validword.length,
+        // });
+
+        // total score is sum of letters in all the words in the array
+        // this.setState({
+        //   total_score: this.state.correct_words.join("").length,
+        // });
+        // alert(response.data.test_res)
+      } else {
+        // this.setState({ messageToUser: "Wrong !", messageType: "red" });
+      }
     }
   }
 
@@ -62,7 +101,7 @@ class App extends Component {
   }
 
   render() {
-    const { matrixData, validateData } = this.props;
+    const { matrixData, validateData, total_score } = this.props;
 
     const { currentMatrix } = matrixData;
     const { validword } = validateData;
@@ -73,16 +112,14 @@ class App extends Component {
       <table width="25%" cellSpacing="20" style={{ margin: "auto" }}>
         <tbody>
           <tr>
-            <td style={{ padding: "2px", textAlign: "center" }}>
-              {validword != "Good Luck!" ? (
-                validword.length > 0 ? (
-                  <h3 style={{ color: "#4CAF50" }}>CORRECT!</h3>
-                ) : (
-                  <h3 style={{ color: "#ff0000" }}>INCORRECT!</h3>
-                )
-              ) : (
-                <h3 style={{ color: "#000" }}>GOOD LUCK!</h3>
-              )}
+            <td>
+              <h3>
+                {validword != "Good Luck!"
+                  ? validword.length > 0
+                    ? "Correct!"
+                    : "Incorrect!"
+                  : "Good Luck!"}
+              </h3>
             </td>
           </tr>
           <tr>
@@ -91,15 +128,16 @@ class App extends Component {
             </td>
           </tr>
           <tr>
-            <td style={{ padding: "20px 0px", textAlign: "center" }}>
+            <td colSpan="2" style={{ padding: "20px 0px" }}>
               <Picker onSubmit={this.handleSubmit} />
             </td>
           </tr>
           <tr>
             <td colSpan="2" style={{ padding: "20px 0px" }}>
-              {isFetching ? "Checking......." : <br />}
-            </td>
-          </tr>
+              <h4>{isFetching ? "Checking......." : ""}</h4>
+            </tr>
+          </td>
+
           <tr>
             <td style={{ padding: "2px", textAlign: "center" }}>
               {"Remaining Time: "}
@@ -111,13 +149,12 @@ class App extends Component {
             </td>
           </tr>
           <tr>
-            <td style={{ padding: "20px 0px", textAlign: "center" }}>
+            <td style={{ padding: "20px 0px" }}>
               <h4>Total Score: {count}</h4>
               <div
                 style={{
                   background: "#eee",
                   border: "1px solid #000",
-                  padding: "10px 20px",
                   textAlign: "center",
                 }}
                 onClick={this.restartGame.bind(this)}

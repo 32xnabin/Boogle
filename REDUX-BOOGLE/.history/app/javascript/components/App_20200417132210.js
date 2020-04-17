@@ -30,7 +30,7 @@ class App extends Component {
       attempted_words: [],
       count: 0,
 
-      timer_start: Date.now() + 10000,
+      timer_start: Date.now() + 180000,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -41,17 +41,56 @@ class App extends Component {
   }
 
   stopGame(e) {
-    const { validateData } = this.props;
+    alert("Game over you scored" + self.state.count);
+    this.setState({
+      game_is_on: true,
 
-    const { count } = validateData;
-    alert("Game over ! TOTAL SCORE : " + count);
-    location.reload();
+      messageToUser: "",
+      correct_words: [],
+      attempted_words: [],
+      count: 0,
+
+      timer_start: Date.now() + 180000,
+    });
   }
   restartGame(e) {
     e.preventDefault();
 
     if (confirm("Are you sure ?")) {
       location.reload();
+    }
+  }
+
+  componentWillUpdate() {
+    const { validateData } = this.props;
+    const { validword } = validateData;
+    const { score } = this.props;
+    if (validword != "Good Luck!") {
+      if (validword.length > 0) {
+        let msg = "";
+        let msg_type = "";
+        if (validword.length === 2) {
+          msg = "Nice";
+          msg_type = "green";
+        } else if (validword.length === 3) {
+          msg = "Cool";
+          msg_type = "green";
+        } else {
+          msg = "Awesome";
+          msg_type = "green";
+        }
+        // this.setState({
+        //   total_score: score + validword.length,
+        // });
+
+        // total score is sum of letters in all the words in the array
+        // this.setState({
+        //   total_score: this.state.correct_words.join("").length,
+        // });
+        // alert(response.data.test_res)
+      } else {
+        // this.setState({ messageToUser: "Wrong !", messageType: "red" });
+      }
     }
   }
 
@@ -62,7 +101,7 @@ class App extends Component {
   }
 
   render() {
-    const { matrixData, validateData } = this.props;
+    const { matrixData, validateData, total_score } = this.props;
 
     const { currentMatrix } = matrixData;
     const { validword } = validateData;

@@ -44,7 +44,7 @@ class App extends Component {
     const { validateData } = this.props;
 
     const { count } = validateData;
-    alert("Game over ! TOTAL SCORE : " + count);
+    alert("Game over ! TOTAL SCORE :" + count);
     location.reload();
   }
   restartGame(e) {
