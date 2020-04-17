@@ -1,0 +1,17 @@
+{
+  "application.js": "/packs/js/application-0b67a3cc2fcde6055024.js",
+  "application.js.map": "/packs/js/application-0b67a3cc2fcde6055024.js.map",
+  "entrypoints": {
+    "application": {
+      "js": ["/packs/js/application-0b67a3cc2fcde6055024.js"],
+      "js.map": ["/packs/js/application-0b67a3cc2fcde6055024.js.map"]
+    },
+    "index": {
+      "js": ["/packs/js/index-da77add1aaf87a5a1ecb.js"],
+      "js.map": ["/packs/js/index-da77add1aaf87a5a1ecb.js.map"]
+    }
+  },
+  "index.js": "/packs/js/index-da77add1aaf87a5a1ecb.js",
+  "index.js.map": "/packs/js/index-da77add1aaf87a5a1ecb.js.map",
+  "media/images/game_image.png": "/packs/media/images/game_image-6c903482.png"
+}
