@@ -1,22 +1,14 @@
 # Fullstack Typescript boilerplate for electronic shop
-A full stack application using typescript as proof of concept for simple electronic shop
 
-backend
-language: typescript
-seneca is used for microservices framework
-docker-compose run the mongodb database service in seprate container
-
-frontend:
-laguage: typescript
-material ui and styledcomponets are used as ui librares
-very simple test is implemented
-React-query is implemented
-
-what can be improved but deleiverately left for the purpose of simplicity for now
+these things are deleiverately left for the purpose of simplicity for now
 JWT or any other authentication for api 
 Redux for state management on frontend
 
 # backend 
+
+language: typescript
+seneca is used for microservices framework
+docker-compose run the mongodb database service in seprate container
 
 Nodejs api with seneca for microservices that uses mongodb as database
 
@@ -57,10 +49,15 @@ So, to start the application
 ```
 npm run start
 ```
-#frontend
 
 
-## Installation and running
+
+## frontend
+
+laguage: typescript
+material ui and styledcomponets are used as ui librares
+very simple test is implemented
+React-query is implemented
 
 cd frontend-React-typescript
 
