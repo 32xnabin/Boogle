@@ -1,6 +1,7 @@
 # Fullstack Typescript boilerplate for electronic shop
 
 these things are deleiverately left for the purpose of simplicity for now
+
 JWT or any other authentication for api 
 Redux for state management on frontend
 
@@ -59,13 +60,17 @@ material ui and styledcomponets are used as ui librares
 very simple test is implemented
 React-query is implemented
 
+```
 cd frontend-React-typescript
-
+```
+```
 npm install
-
+```
+```
 npm start
+```
 
-npm test
+
 
 
 
