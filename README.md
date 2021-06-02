@@ -63,6 +63,13 @@ React-query is implemented
 ```
 cd frontend-React-typescript
 ```
+
+Copy `.env.dist` to `.env` to use api url
+
+```
+cp .env.dist .env
+```
+
 ```
 npm install
 ```
